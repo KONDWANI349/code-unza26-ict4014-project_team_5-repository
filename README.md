@@ -17,6 +17,16 @@ The dashboard does not upload or persist data. Use only exports approved for thi
 
 The default required fields are patient identifier, visit date, systolic blood pressure, and diastolic blood pressure. These can be changed in the interface. Diagnosis/status, medication/treatment, and follow-up date are included as additional review fields.
 
+## Deploy to GitHub Pages
+
+Before the first deployment, a repository administrator must enable Pages:
+
+1. Open the repository on GitHub and go to **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Push the workflow and site files to the `main` branch, or run **Deploy static site to GitHub Pages** from the **Actions** tab.
+
+The workflow uses the repository's standard `GITHUB_TOKEN` permissions to upload and deploy the site. It does not attempt to change repository Pages settings, which require separate administrator authorization.
+
 ## Scope
 
 This is a data-quality aid, not a clinical decision-support system. It does not apply clinical thresholds, assess treatment appropriateness, or replace source verification and local documentation standards.
