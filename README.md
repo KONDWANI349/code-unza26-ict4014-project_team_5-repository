@@ -1,2 +1,22 @@
-# code-unza26-ict4014-project_team_5-repository
-This project aims to evaluate how complete and clinically useful the hypertension data captured in SmartCare is for patient management at the University of Zambia Clinic. Hypertension requires long-term follow-up, and good quality data is essential for making correct clinical decisions.
+# UNZA Clinic Hypertension Data Quality Dashboard
+
+A small browser-based tool for reviewing completeness and basic consistency in a CSV export of hypertension visit data.
+
+## Run it
+
+Open `index.html` in a modern browser. No installation, server, or build step is required. Choose a CSV export or load the included synthetic example.
+
+## Use it
+
+1. Load a CSV with a header row and at least one data row.
+2. Check the suggested column mappings and adjust them as needed.
+3. Select which mapped fields count as required for the review.
+4. Review field coverage, missing required values, and basic date/numeric parsing issues.
+
+The dashboard does not upload or persist data. Use only exports approved for this purpose, following clinic policy for de-identification and handling. The example records are synthetic.
+
+The default required fields are patient identifier, visit date, systolic blood pressure, and diastolic blood pressure. These can be changed in the interface. Diagnosis/status, medication/treatment, and follow-up date are included as additional review fields.
+
+## Scope
+
+This is a data-quality aid, not a clinical decision-support system. It does not apply clinical thresholds, assess treatment appropriateness, or replace source verification and local documentation standards.

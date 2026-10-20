@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#123c35">
+    <title>Hypertension Data Quality Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Hypertension data quality dashboard home">
+        <span class="brand-mark" aria-hidden="true">+</span>
+        <span>UNZA Clinic <small>Data quality review</small></span>
+      </a>
+      <span class="privacy-note"><span aria-hidden="true">●</span> Data stays in this browser</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">SMARTCARE · HYPERTENSION</p>
+        <h1>Is the data ready to support care?</h1>
+        <p>Review completeness and basic consistency in a hypertension visit export. This tool describes the data; it does not provide clinical advice.</p>
+      </section>
+
+      <section class="panel import-panel" aria-labelledby="import-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">START A REVIEW</p>
+            <h2 id="import-heading">Load a CSV export</h2>
+          </div>
+          <button class="button button-secondary" id="sample-button" type="button">Load example data</button>
+        </div>
+        <label class="drop-zone" id="drop-zone" for="file-input">
+          <span class="upload-icon" aria-hidden="true">↑</span>
+          <span><strong>Choose a CSV file</strong> or drag it here</span>
+          <small>CSV files only · Processing happens locally in your browser</small>
+          <input id="file-input" type="file" accept=".csv,text/csv">
+        </label>
+        <p class="privacy-help">Use an approved, de-identified export. The file is not uploaded or saved by this page.</p>
+        <p class="error-message" id="error-message" role="alert" hidden></p>
+      </section>
+
+      <section id="review" hidden aria-label="Data quality review">
+        <section class="panel mapping-panel" aria-labelledby="mapping-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">CONFIGURE REVIEW</p>
+              <h2 id="mapping-heading">Match your columns</h2>
+            </div>
+            <p class="panel-hint">Choose the CSV column for each data element. Mark fields required for your review.</p>
+          </div>
+          <div class="mapping-grid" id="mapping-grid"></div>
+        </section>
+
+        <section class="summary-grid" aria-label="Dataset summary">
+          <article class="summary-card">
+            <span class="summary-label">Visit records</span>
+            <strong id="record-count">0</strong>
+            <span class="summary-foot">Rows in this file</span>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Required data completeness</span>
+            <strong id="completeness">—</strong>
+            <span class="summary-foot" id="completeness-foot">Across selected required fields</span>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Records with missing required data</span>
+            <strong id="incomplete-count">0</strong>
+            <span class="summary-foot">At least one required field is blank</span>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Values needing review</span>
+            <strong id="quality-count">0</strong>
+            <span class="summary-foot">Unparseable dates or BP values</span>
+          </article>
+        </section>
+
+        <section class="panel completeness-panel" aria-labelledby="completeness-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">FIELD COVERAGE</p>
+              <h2 id="completeness-heading">Completeness by data element</h2>
+            </div>
+            <span class="small-note" id="source-name"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Data element</th><th scope="col">Mapped column</th><th scope="col">Recorded</th><th scope="col">Missing</th><th scope="col">Completeness</th></tr>
+              </thead>
+              <tbody id="field-results"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel issues-panel" aria-labelledby="issues-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">BASIC VALIDATION</p>
+              <h2 id="issues-heading">Values to check</h2>
+            </div>
+            <p class="panel-hint">Only dates and blood-pressure values are checked for parseability. No clinical thresholds are applied.</p>
+          </div>
+          <div id="issue-results" class="issue-results"></div>
+        </section>
+        <p class="disclaimer">This dashboard is a data-quality aid, not a clinical decision-support system. Confirm findings against the approved source and local clinical documentation standards.</p>
+      </section>
+    </main>
+    <footer>UNZA Clinic · Hypertension data quality review</footer>
+  </body>
+</html>
